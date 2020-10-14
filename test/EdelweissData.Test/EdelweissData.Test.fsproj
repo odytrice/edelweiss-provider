@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/EdelweissData.Provider/EdelweissData.Provider.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EdelwiessClientTests.fs" />
+    <Compile Include="ProviderTests.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
