@@ -30,8 +30,6 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
         let datasetId = dataset.Id.Id.ToString()
         let datasetType = ProvidedTypeDefinition(datasetId, baseType = Some typeof<obj>)
 
-        dataset
-
         for column in dataset.Schema.Columns do
             let prop = ProvidedProperty(column.Name, column.DataType |> toNetType)
             datasetType.AddMember(prop)
@@ -76,5 +74,5 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
             )
 
 
-// [<assembly: TypeProviderAssembly>]
-// do ()
+[<assembly: TypeProviderAssembly>]
+do ()
