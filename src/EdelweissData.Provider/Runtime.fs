@@ -16,12 +16,12 @@ type Instance(config: Config) =
     member _.Datasets =
         config |> Client.getDatasets
 
-    member this.GetDataset(datasetId: Guid) =
-        let dataset =
+    member this.GetDataset(datasetId: string) =
+        let datasetOption =
             this.Datasets
-            |> Array.filter(fun d -> d.Id.Id = datasetId)
+            |> Array.filter(fun d -> d.Id.Id.ToString() = datasetId)
             |> Array.tryHead
 
-        match dataset with
-        | Some dataset -> dataset
+        match datasetOption with
+        | Some datasetInfo -> Dataset(config, datasetInfo)
         | None -> failwith (sprintf "Dataset %O was not found" datasetId)

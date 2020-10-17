@@ -40,7 +40,8 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
         rowType
 
     let createDatasetType (datasetInfo: DatasetInfo) =
-        let datasetType = ProvidedTypeDefinition(datasetInfo.Id.Id.ToString(), Some typeof<Dataset>)
+        let datasetId = datasetInfo.Id.Id.ToString()
+        let datasetType = ProvidedTypeDefinition(datasetId, Some typeof<Dataset>)
 
         let rowType = createRowType datasetInfo
 
@@ -66,7 +67,7 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
         let datasetInfos = Client.getDatasets config
 
         for datasetInfo in datasetInfos do
-            let datasetId = datasetInfo.Id.Id
+            let datasetId = datasetInfo.Id.Id.ToString()
 
             let datasetType = createDatasetType datasetInfo
 
@@ -102,7 +103,7 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
     //Declare Static Type Parameters
     let parameters = [
         ProvidedStaticParameter("Url", typeof<string>, "https://api.edelweissdata.com/")
-        ProvidedStaticParameter("Token", typeof<string>, "")
+        ProvidedStaticParameter("Token", typeof<string>)
     ]
 
     // Add the type to the namespace.
