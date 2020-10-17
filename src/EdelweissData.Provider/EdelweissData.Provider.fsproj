@@ -14,6 +14,7 @@
     <Content Include="../../packages/Newtonsoft.Json/lib/netstandard2.0/Newtonsoft.Json.dll" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="Types.fs" />
     <Compile Include="Client.fs" />
+    <Compile Include="Runtime.fs" />
     <Compile Include="Provider.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

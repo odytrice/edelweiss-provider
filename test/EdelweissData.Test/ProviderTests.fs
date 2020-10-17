@@ -1,17 +1,16 @@
 module EdelweissData.Tests.ProviderTests
 
 open Expecto
-open EdelweissData.Provider.Types
+open EdelweissData.Provided.Types
 
- open EdelweissData.TypeProviders
- type Public = EdelweissDataProvider<"">
+type PublicInstance = EdelweissData<Token = "">
 
 [<Tests>]
 let tests =
     testList "Edelweiss Provider" [
         test "can resolve properties" {
+            let instance = PublicInstance()
 
-            let instance = Public()
             let rows = instance.``Test file``.Rows
 
             let output = sprintf "%O" rows
