@@ -11,9 +11,10 @@
       <Paket>True</Paket>
       <Link>paket-files/ProvidedTypes.fs</Link>
     </Compile>
-    <Compile Include="EdelweissClient.fs" />
-    <Compile Include="EdelweissDataset.fs" />
-    <Compile Include="EdelweissProvider.fs" />
+    <Content Include="../../packages/Newtonsoft.Json/lib/netstandard2.0/Newtonsoft.Json.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Client.fs" />
+    <Compile Include="Provider.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
