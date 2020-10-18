@@ -1,4 +1,4 @@
-module EdelweissData.Provider.Types
+namespace EdelweissData.Provider.Types
 
 open System
 type DatasetId = {

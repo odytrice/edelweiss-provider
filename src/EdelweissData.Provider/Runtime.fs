@@ -1,16 +1,21 @@
-namespace EdelweissData.Provided.Types
+namespace EdelweissData.Provider.Types
 
-open EdelweissData.Provider.Types
 open System.Data
 open System
 open EdelweissData.Provider
 
 type Dataset(config: Config, dataset: DatasetInfo) =
+    let table = lazy(dataset |> Client.getData config)
+
     member _.Rows =
-        dataset
-        |> Client.getData config
+        table.Value
         |> fun d -> d.Rows
         |> Seq.cast<DataRow>
+
+    member _.Columns =
+        table.Value
+        |> fun d -> d.Columns
+        |> Seq.cast<DataColumn>
 
 type Instance(config: Config) =
     member _.Datasets =

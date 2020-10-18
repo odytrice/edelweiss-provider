@@ -1,4 +1,5 @@
 FSharp.Core
+FSharp.Data
 Newtonsoft.Json
 
 File:ProvidedTypes.fsi

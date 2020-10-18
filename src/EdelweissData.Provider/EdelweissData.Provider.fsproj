@@ -1,17 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../../paket-files/fsprojects/FSharp.TypeProviders.SDK/src/ProvidedTypes.fsi">
+    <!-- These are included so that IDE/Compilers can pick them up during compilation -->
+    <Content Include="../../packages/Newtonsoft.Json/lib/netstandard2.0/Newtonsoft.Json.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../packages/FSharp.Data/lib/netstandard2.0/FSharp.Data.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../packages/FSharp.Data/lib/netstandard2.0/FSharp.Data.DesignTime.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fsi">
       <Paket>True</Paket>
       <Link>paket-files/ProvidedTypes.fsi</Link>
     </Compile>
-    <Compile Include="../../paket-files/fsprojects/FSharp.TypeProviders.SDK/src/ProvidedTypes.fs">
+    <Compile Include="..\..\paket-files\fsprojects\FSharp.TypeProviders.SDK\src\ProvidedTypes.fs">
       <Paket>True</Paket>
       <Link>paket-files/ProvidedTypes.fs</Link>
     </Compile>
-    <Content Include="../../packages/Newtonsoft.Json/lib/netstandard2.0/Newtonsoft.Json.dll" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="Types.fs" />
     <Compile Include="Client.fs" />
     <Compile Include="Runtime.fs" />

@@ -6,7 +6,6 @@ open System.Reflection
 open EdelweissData.Provider.Types
 open System.Data
 open Microsoft.FSharp.Quotations
-open EdelweissData.Provided.Types
 
 
 [<TypeProvider>]
@@ -102,7 +101,7 @@ type EdelweissProvider(config: TypeProviderConfig) as this =
 
     //Declare Static Type Parameters
     let parameters = [
-        ProvidedStaticParameter("Url", typeof<string>, "https://api.edelweissdata.com/")
+        ProvidedStaticParameter("Url", typeof<string>, "https://api.edelweissdata.com")
         ProvidedStaticParameter("Token", typeof<string>)
     ]
 

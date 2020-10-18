@@ -9,8 +9,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EdelwiessClientTests.fs" />
-    <Compile Include="ProviderTests.fs" />
     <Compile Include="RuntimeTypeTests.fs" />
+    <Compile Include="TypeProviderTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

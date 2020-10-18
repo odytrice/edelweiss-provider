@@ -4,7 +4,7 @@ open Expecto
 open EdelweissData.Provider.Client
 open EdelweissData.Provider.Types
 
-let edelweissData = "https://api.edelweissdata.com/"
+let edelweissData = "https://api.edelweissdata.com"
 let config = { EdelweissUrl = edelweissData; Token = "" }
 
 [<Tests>]
