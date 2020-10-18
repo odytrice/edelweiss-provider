@@ -55,7 +55,7 @@ let toDataTable (schema: (string * Type)[]) (csv: CsvFile) =
         table.Rows.Add(row) |> ignore
     table
 
-let private getDataExpensive (config: Config) (dataset: DatasetInfo) =
+let getData (config: Config) (dataset: DatasetInfo) =
     async {
         let url = sprintf "%s/datasets/%O/versions/%d/data" config.EdelweissUrl dataset.Id.Id dataset.Id.Version
 
@@ -72,7 +72,7 @@ let private getDataExpensive (config: Config) (dataset: DatasetInfo) =
     }
     |> Async.RunSynchronously
 
-let private getDatasetsExpensive (config: Config) =
+let getDatasets (config: Config) =
     async {
 
         let url = sprintf "%s/datasets" config.EdelweissUrl
@@ -95,30 +95,3 @@ let private getDatasetsExpensive (config: Config) =
         return response.Results
     }
     |> Async.RunSynchronously
-
-let getData =
-    let cache = Dictionary<_,_>()
-    fun (config: Config) (dataset: DatasetInfo) ->
-        let key = sprintf "%s+%O" config.EdelweissUrl dataset.Id.Id
-        let exist, value = cache.TryGetValue (key)
-        match exist with
-        | true -> 
-            value
-        | _ -> 
-            // Function call is required first followed by caching the result for next call with the same parameters
-            let value = getDataExpensive config dataset
-            cache.Add (key, value)
-            value
-let getDatasets =
-    let cache = Dictionary<_,_>()
-    fun (config: Config) ->
-        let key = sprintf "%s" config.EdelweissUrl
-        let exist, value = cache.TryGetValue (key)
-        match exist with
-        | true -> 
-            value
-        | _ -> 
-            // Function call is required first followed by caching the result for next call with the same parameters
-            let value = getDatasetsExpensive config
-            cache.Add (key, value)
-            value
