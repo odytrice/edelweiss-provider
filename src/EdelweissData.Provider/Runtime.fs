@@ -18,12 +18,14 @@ type Dataset(config: Config, dataset: DatasetInfo) =
         |> Seq.cast<DataColumn>
 
 type Instance(config: Config) =
-    member _.Datasets =
-        config |> Client.getDatasets
+    
+    let datasets = lazy(config |> Client.getDatasets)
+    
+    member _.Datasets = datasets.Value        
 
     member this.GetDataset(datasetId: string) =
         let datasetOption =
-            this.Datasets
+            datasets.Value
             |> Array.filter(fun d -> d.Id.Id.ToString() = datasetId)
             |> Array.tryHead
 
